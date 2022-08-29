@@ -1,0 +1,13 @@
+.to-do-list-item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.to-do-list-item.done .to-do-list-item-label {
+    text-decoration: line-through;
+}
+.to-do-list-item.important .to-do-list-item-label {
+    font-weight: bold;
+    color: steelblue;
+}
