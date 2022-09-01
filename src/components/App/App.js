@@ -35,7 +35,7 @@ export default class App extends Component {
     
     this.setState( ({ dataArr }) => {
       let itemTitle = document.querySelector('#item_title').value; 
-      console.log(dataArr.length);
+      // console.log(dataArr.length);
 
       let newItem = {
         title: itemTitle,
@@ -62,7 +62,10 @@ export default class App extends Component {
 
       resultArr[index].done = !dataArr[index].done;
 
-      console.log('resultArr>>', resultArr);
+      let doneEls = document.querySelectorAll(".to-do-list-item-label");
+
+      // console.log('resultArr>>', resultArr);
+      resultArr[index].done ? doneEls[index].style.textDecoration = "line-through" : doneEls[index].style.textDecoration = "unset";
 
       return {
         dataArr: resultArr
@@ -71,7 +74,26 @@ export default class App extends Component {
   };
 
   onToggleImportant = (id) => {
-    console.log('onToggleImportant>>>', id);
+    this.setState( ({ dataArr }) => {
+      const index = dataArr.findIndex( (el) => el.id === id);
+
+      let resultArr = [...dataArr];
+
+      resultArr[index].important = !dataArr[index].important;
+
+      let impEls = document.querySelectorAll(".to-do-list-item-label");
+
+      resultArr[index].important ? impEls[index].classList.add("text-primary", "fw-bold") : impEls[index].classList.remove("text-primary", "fw-bold");
+      resultArr[index].important ? impEls[index].style.fontWeight = "bold" : impEls[index].style.fontWeight = "normal";
+
+      console.log('index>>>', index);
+      
+      return {
+        dataArr: resultArr
+      }
+
+    });
+
   }
 
   render() {
@@ -90,6 +112,45 @@ export default class App extends Component {
             onToggleDone={ this.onToggleDone }
           />
       </div>
-    );
+    ); 
   }
 }
+
+/* function Automobile(mark, type) {
+  this.mark = mark;
+  this.type = type;
+}
+
+Automobile.prototype.showType = function() {
+  console.log(`${this.mark} type is ${this.type}`);
+}
+
+const bmw = new Automobile("BMW", "sedan");
+bmw.showType(); */
+
+/* class Automobile {
+  constructor(mark, type) {
+    this.mark = mark;
+    this.type = type;
+  }
+
+  selfPresentation() {
+    console.log(`${this.mark} is ${this.type}`);
+  }
+}
+
+class Truck extends Automobile {
+  constructor(mark, type, haveTrailer) {
+    super(mark, type);
+    // super.selfPresentation();
+    this.haveTrailer = haveTrailer;
+  }
+
+  selfPresentation() {
+    const isHaveTrailer = this.haveTrailer ? ` and have trailer` : ``; 
+    console.log(`${this.mark} is ${this.type}${isHaveTrailer}`);
+  }
+}
+
+const daf = new Truck('daf', 'truck', true);
+daf.selfPresentation(); */

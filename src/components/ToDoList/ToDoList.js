@@ -5,15 +5,16 @@ import AddItemPanel from '../AddItemPanel';
 import './toDoList.css';
 
 const ToDoList = ({ compData, onDeleted, addItem, onToggleDone, onToggleImportant }) => { 
-  // console.log('ToDoList==', compData[0]);
+  // console.log(props);
+  /* console.log('ToDoList==', compData[0]); 
 
-  // let deleteItem = (i) => {
-  //   compData.splice(i);
+  let deleteItem = (i) => {
+    compData.splice(i);
  
-  //   console.log();
+    console.log();
 
-  //   return compData;
-  // }
+    return compData;
+  } */
 
   let toDoListElements = compData.map((item, i) => {
     let {id, ...itemProps} = item;
@@ -27,14 +28,14 @@ const ToDoList = ({ compData, onDeleted, addItem, onToggleDone, onToggleImportan
         onToggleImportant={ () => onToggleImportant(id) } />
       </li> 
     );
-  })
+  });
 
-    return(
-      <ul className="list-group to-do-list">
-        { toDoListElements }
-        <AddItemPanel addItem={ addItem } />
-      </ul>
-    );
+  return(
+    <ul className="list-group to-do-list">
+      { toDoListElements }
+      <AddItemPanel addItem={ addItem } />
+    </ul>
+  );
 };
 
 export default ToDoList;

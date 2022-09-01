@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import './ToDoListItem.css';
 
 export default class ToDoListItem extends Component {
-    // constructor() {
-    //     super();
-    // }
+    /* constructor() {
+        super();
+    } */
 
     render() {
         let { title, onDeleted, onToggleDone, onToggleImportant } = this.props;
@@ -14,20 +14,20 @@ export default class ToDoListItem extends Component {
 
         let classNames = "to-do-list-item";
 
-        // if(done) {
-        //     classNames += " done";
-        // }
+        /* if(done) {
+            classNames += " done";
+        }
 
-        // if(important) {
-        //     classNames += " important";
-        // }
+        if(important) {
+            classNames += " important";
+        } */
 
         return (
             <div 
             className={ classNames } >
                 <span 
                       className="to-do-list-item-label"
-                      onClick={ onToggleDone }>
+                      onClick={ onToggleDone } >
                     { title }
                 </span>
                 <div className="button_wrapper">
